@@ -481,38 +481,36 @@
             </nav>
         </div>
     </header>
-    </body>  
- </style>
-</head>
-<body>
-    <div class="login-container">
-        <h1>Welcome Back</h1>
-        <p class="subtitle">Log in to your Learnex account</p>
+    <div class="page-content">
+        <div class="login-container">
+            <h1>Welcome Back</h1>
+            <p class="subtitle">Log in to your Learnex account</p>
 
-        <form class="login-form">
-            <div class="form-group">
-                <label for="emailAddress">Email Address</label>
-                <input type="email" id="emailAddress" placeholder="your.email@example.com">
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter your password">
-            </div>
-
-            <div class="form-options">
-                <div class="remember-me">
-                    <input type="checkbox" id="rememberMe">
-                    <label for="rememberMe">Remember Me</label>
+            <form class="login-form" autocomplete="on">
+                <div class="form-group">
+                    <label for="emailAddress">Email Address</label>
+                    <input type="email" id="emailAddress" name="email" placeholder="your.email@example.com" required autocomplete="email">
                 </div>
-                <a href="#">Forgot Password?</a>
-            </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required autocomplete="current-password">
+                </div>
 
-            <button type="submit" class="login-button">Log In</button>
-        </form>
+                <div class="form-options">
+                    <div class="remember-me">
+                        <input type="checkbox" id="rememberMe" name="remember">
+                        <label for="rememberMe">Remember Me</label>
+                    </div>
+                    <a href="#">Forgot Password?</a>
+                </div>
 
-        <p class="signup-link">
-            Don't have an account? <a href="#">Sign up here</a>
-        </p>
+                <button type="submit" class="login-button">Log In</button>
+            </form>
+
+            <p class="signup-link">
+                Don't have an account? <a href="signup.html">Sign up here</a>
+            </p>
+        </div>
     </div>
     
 
@@ -568,6 +566,51 @@
 </div>
  </footer>
 
+
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>Learnex</h4>
+                    <p class="footer-academy-info">
+                        Personalized learning support with live classes and AI assistance.
+                    </p>
+                    <p class="data-statement">
+                        Data stays on your browser unless you choose to share.
+                    </p>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul class="quick-links-grid">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="stories.html">Stories</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                    <p><a href="privacy.html">Privacy Policy</a></p>
+                    <p><a href="terms.html">Terms of Service</a></p>
+                </div>
+                <div class="footer-column">
+                    <h4>Connect With Us</h4>
+                    <a href="mailto:support@learnex.com" class="email-link">
+                        <i class="fas fa-envelope"></i> support@learnex.com
+                    </a>
+                    <div class="connect-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <p style="margin-top: 30px; line-height: 1.5;">
+                        Accessibility statement: We strive to make our platform accessible to all learners.
+                    </p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Learnex Academy. All rights reserved.
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>

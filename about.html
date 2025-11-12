@@ -12,6 +12,72 @@
         /* --- Global Variables & Reset --- */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
+                /* --- Responsive Hamburger Menu --- */
+                .navbar .menu-toggle {
+                    display: none;
+                    background: none;
+                    border: none;
+                    font-size: 2rem;
+                    color: var(--primary-blue);
+                    cursor: pointer;
+                    margin-left: 1rem;
+                }
+                @media (max-width: 1024px) {
+                    .navbar nav ul {
+                        display: none;
+                        flex-direction: column;
+                        background: var(--white);
+                        position: absolute;
+                        top: 60px;
+                        right: 0;
+                        width: 70vw;
+                        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+                        z-index: 1001;
+                    }
+                    .navbar nav ul.open {
+                        display: flex;
+                    }
+                    .navbar .menu-toggle {
+                        display: block;
+                    }
+                }
+                @media (max-width: 600px) {
+                    html, body {
+                        font-size: 15px;
+                    }
+                    .container {
+                        padding: 0 4vw;
+                    }
+                }
+                @media (min-width: 601px) and (max-width: 1024px) {
+                    html, body {
+                        font-size: 16px;
+                    }
+                    .container {
+                        padding: 0 3vw;
+                    }
+                }
+                @media (min-width: 1025px) {
+                    html, body {
+                        font-size: 17px;
+                    }
+                }
+                img, video {
+                    max-width: 100%;
+                    height: auto;
+                    display: block;
+                }
+                button, .btn, .signup-button {
+                    min-height: 44px;
+                    min-width: 44px;
+                    font-size: 1em;
+                }
+                a, button {
+                    touch-action: manipulation;
+                }
+                html, body {
+                    overflow-x: hidden;
+                }
         :root {
             --primary-blue: #007bff; /* Primary brand color */
             --dark-blue: #0a1f44; /* Darker blue for background and text */
@@ -232,7 +298,10 @@
                 Learnex
             </div>
             <nav>
-                <ul>
+                <button class="menu-toggle" aria-label="Open menu" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul id="main-nav">
                     <li><a href="index.html" class="active">Home</a></li>
             <!--     <li><a href="#">Courses</a></li>
                     <li><a href="#">Live Classes</a></li>
@@ -450,4 +519,12 @@ Learnex is a next-generation learning platform designed to make education smarte
  </footer>
 
 </body>
+</body>
+<script>
+// Hamburger menu toggle
+function toggleMenu() {
+    var nav = document.getElementById('main-nav');
+    nav.classList.toggle('open');
+}
+</script>
 </html>

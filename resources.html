@@ -158,72 +158,83 @@
         }
         .quick-links-grid {
             display: grid;
-            <header class="navbar">
-                <div class="container">
-                    <div class="logo">
-                        <img src="images/logo.png" alt="Learnex Logo" width="48" height="48" style="object-fit:contain;" loading="lazy">
-                        Learnex
-                    </div>
-                    <nav>
-                        <ul>
-                            <li><a href="index.html" class="active">Home</a></li>
-                            <li><a href="stories.html">Stories</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                        <button class="signup-button">Sign Up</button>
-                    </nav>
-                </div>
-            </header>
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 0;
+            list-style: none;
+            padding-left: 0;
+        }
+        .quick-links-grid li {
+            margin: 0;
+            padding: 0;
+        }
+        .connect-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .connect-links a {
+            font-size: 1.2rem;
+        }
 
-            <!-- ...existing code... -->
+        .email-link {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .email-link i {
+            margin-right: 8px;
+            font-size: 1rem;
+            color: var(--primary-blue);
+        }
+        .copyright {
+            border-top: 1px solid #ddd;
+            text-align: left;
+            padding: 20px 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        /* Override styles for specific footer text as seen in the image */
+        .footer-academy-info {
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+        .data-statement {
+            font-style: italic;
+            font-size: 0.85rem;
+            color: #999;
+        }
 
-            <footer class="main-footer">
-                <div class="container">
-                    <div class="footer-content">
-                        <div class="footer-column">
-                            <h4>Learnex</h4>
-                            <p class="footer-academy-info">
-                                Personalized learning support with live classes and AI assistance.
-                            </p>
-                            <p class="data-statement">
-                                Data stays on your browser unless you choose to share.
-                            </p>
-                        </div>
-                        <div class="footer-column">
-                            <h4>Quick Links</h4>
-                            <ul class="quick-links-grid">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="stories.html">Stories</a></li>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
-                            <p><a href="privacy.html">Privacy Policy</a></p>
-                            <p><a href="terms.html">Terms of Service</a></p>
-                        </div>
-                        <div class="footer-column">
-                            <h4>Connect With Us</h4>
-                            <a href="mailto:support@learnex.com" class="email-link">
-                                <i class="fas fa-envelope"></i> support@learnex.com
-                            </a>
-                            <div class="connect-links">
-                                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                            <p style="margin-top: 30px; line-height: 1.5;">
-                                Accessibility statement: We strive to make our platform accessible to all learners.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="copyright">
-                        &copy; 2025 Learnex Academy. All rights reserved.
-                    </div>
-                </div>
-            </footer>
 
-        </body>
-        </html>
+        /* --- Responsive Design --- */
+        @media (max-width: 1024px) {
+            .navbar nav ul {
+                display: none; /* Hide nav links on smaller screens */
+            }
+            .navbar .container {
+                justify-content: space-around;
+            }
+              .footer-content {
+                justify-content: space-around;
+            }
+            .footer-column {
+                min-width: 200px;
+                flex: none;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Learnex Logo" width="48" height="48" style="object-fit:contain;" loading="lazy">
+                Learnex
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+            <!--     <li><a href="#">Courses</a></li>
                     <li><a href="#">Live Classes</a></li>
                     <li><a href="#">Teachers</a></li>  -->
                     <li><a href="stories.html">Stories</a></li>

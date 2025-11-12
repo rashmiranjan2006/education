@@ -502,16 +502,16 @@
             <h1>Join Learnex</h1>
             <p class="subtitle">Select your role and create your account</p>
 
-            <div class="role-selection">
-                <div class="role-option" data-role="teacher">
+            <div class="role-selection" role="radiogroup" aria-label="Select your role">
+                <div class="role-option" data-role="teacher" tabindex="0" aria-checked="false" role="radio">
                     <i class="fas fa-graduation-cap"></i>
                     <span>Teacher</span>
                 </div>
-                <div class="role-option active" data-role="student">
+                <div class="role-option active" data-role="student" tabindex="0" aria-checked="true" role="radio">
                     <i class="fas fa-user-friends"></i>
                     <span>Student</span>
                 </div>
-                <div class="role-option" data-role="admin">
+                <div class="role-option" data-role="admin" tabindex="0" aria-checked="false" role="radio">
                     <i class="fas fa-shield-alt"></i>
                     <span>Admin</span>
                 </div>
@@ -520,28 +520,28 @@
                 </div>
             </div>
 
-            <form class="signup-form">
+            <form class="signup-form" autocomplete="on">
                 <div class="form-group">
                     <label for="fullName">Full Name</label>
-                    <input type="text" id="fullName" placeholder="Enter your full name">
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required autocomplete="name">
                 </div>
                 <div class="form-group">
                     <label for="emailAddress">Email Address</label>
-                    <input type="email" id="emailAddress" placeholder="your.email@example.com">
+                    <input type="email" id="emailAddress" name="email" placeholder="your.email@example.com" required autocomplete="email">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Minimum 6 characters">
+                    <input type="password" id="password" name="password" placeholder="Minimum 6 characters" required autocomplete="new-password">
                 </div>
                 <div class="form-group">
                     <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" id="confirmPassword" placeholder="Re-enter your password">
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" required autocomplete="new-password">
                 </div>
 
-                <div class="role-info" id="teacher-info">
+                <div class="role-info" id="teacher-info" style="display:none;">
                     <p><strong>Teacher Registration:</strong> Your account will be reviewed by our admin team before activation.</p>
                 </div>
-                <div class="role-info" id="admin-info">
+                <div class="role-info" id="admin-info" style="display:none;">
                     <p><strong>Admin Registration:</strong> This requires special authorization. Contact support for access.</p>
                 </div>
 
@@ -564,7 +564,6 @@
                         Data stays on your browser unless you choose to share.
                     </p>
                 </div>
-
                 <div class="footer-column">
                     <h4>Quick Links</h4>
                     <ul class="quick-links-grid">
@@ -572,11 +571,10 @@
                         <li><a href="stories.html">Stories</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="contact.html">Contact</a></li>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms of Service</a></li>
                     </ul>
+                    <p><a href="privacy.html">Privacy Policy</a></p>
+                    <p><a href="terms.html">Terms of Service</a></p>
                 </div>
-
                 <div class="footer-column">
                     <h4>Connect With Us</h4>
                     <a href="mailto:support@learnex.com" class="email-link">
@@ -592,7 +590,6 @@
                     </p>
                 </div>
             </div>
-
             <div class="copyright">
                 &copy; 2025 Learnex Academy. All rights reserved.
             </div>

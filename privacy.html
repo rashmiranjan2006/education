@@ -9,40 +9,100 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* --- Global Variables & Reset --- */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
+        /* --- Responsive Hamburger Menu --- */
+        .navbar .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+        @media (max-width: 1024px) {
+            .navbar nav ul {
+                display: none;
+                flex-direction: column;
+                background: var(--white);
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 70vw;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+                z-index: 1001;
+            }
+            .navbar nav ul.open {
+                display: flex;
+            }
+            .navbar .menu-toggle {
+                display: block;
+            }
+        }
+        @media (max-width: 600px) {
+            html, body {
+                font-size: 15px;
+            }
+            .container {
+                padding: 0 4vw;
+            }
+        }
+        @media (min-width: 601px) and (max-width: 1024px) {
+            html, body {
+                font-size: 16px;
+            }
+            .container {
+                padding: 0 3vw;
+            }
+        }
+        @media (min-width: 1025px) {
+            html, body {
+                font-size: 17px;
+            }
+        }
+        img, video {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        button, .btn, .signup-button {
+            min-height: 44px;
+            min-width: 44px;
+            font-size: 1em;
+        }
+        a, button {
+            touch-action: manipulation;
+        }
+        html, body {
+            overflow-x: hidden;
+        }
         :root {
-            --primary-blue: #007bff; /* Primary brand color */
-            --dark-blue: #0a1f44; /* Darker blue for background and text */
+            --primary-blue: #007bff;
+            --dark-blue: #0a1f44;
             --light-gray: #f8f9fa;
             --white: #ffffff;
             --text-color: #333;
-            --section-bg: #f5f8ff; /* Light blue background for the features section */
+            --section-bg: #f5f8ff;
             --card-bg: #ffffff;
             --spark-yellow: #ffc107;
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Montserrat', sans-serif;
             color: var(--text-color);
             line-height: 1.6;
             background-color: var(--light-gray);
         }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
-        /* --- 1. Navbar --- */
         .navbar {
             background-color: var(--white);
             color: var(--dark-blue);
@@ -52,13 +112,11 @@
             z-index: 1000;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-
         .navbar .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
         .navbar .logo {
             display: flex;
             align-items: center;
@@ -66,7 +124,6 @@
             font-size: 24px;
             color: var(--dark-blue);
         }
-
         .navbar .logo img {
             margin-right: 10px;
             border-radius: 5px;
@@ -75,22 +132,18 @@
             object-fit: contain;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
-        
         .navbar nav {
             display: flex;
             align-items: center;
         }
-
         .navbar nav ul {
             list-style: none;
             display: flex;
             margin-right: 20px;
         }
-
         .navbar nav ul li {
             margin-left: 30px;
         }
-
         .navbar nav ul li a {
             color: var(--dark-blue);
             text-decoration: none;
@@ -98,13 +151,11 @@
             padding: 5px 0;
             transition: color 0.3s ease;
         }
-
         .navbar nav ul li a:hover,
         .navbar nav ul li a.active {
             color: var(--primary-blue);
             border-bottom: 2px solid var(--primary-blue);
         }
-
         .signup-button {
             background-color: var(--primary-blue);
             color: var(--white);
@@ -116,12 +167,9 @@
             font-size: 16px;
             transition: background-color 0.3s ease;
         }
-
         .signup-button:hover {
             background-color: #0056b3;
         }
-
-         /* --- Footer Section (New Styles) --- */
         .main-footer {
             background-color: var(--light-gray);
             color: #666;
@@ -175,7 +223,6 @@
         .connect-links a {
             font-size: 1.2rem;
         }
-
         .email-link {
             display: flex;
             align-items: center;
@@ -193,7 +240,6 @@
             color: #666;
             font-size: 0.9rem;
         }
-        /* Override styles for specific footer text as seen in the image */
         .footer-academy-info {
             line-height: 1.8;
             margin-bottom: 10px;
@@ -203,24 +249,29 @@
             font-size: 0.85rem;
             color: #999;
         }
-
-
-        /* --- Responsive Design --- */
         @media (max-width: 1024px) {
             .navbar nav ul {
-                display: none; /* Hide nav links on smaller screens */
+                display: none;
             }
             .navbar .container {
                 justify-content: space-around;
             }
-              .footer-content {
+            .footer-content {
                 justify-content: space-around;
             }
             .footer-column {
                 min-width: 200px;
                 flex: none;
             }
-
+        }
+        @media (max-width: 600px) {
+            .footer-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .footer-column {
+                min-width: 100%;
+            }
         }
     </style>
 </head>
@@ -232,9 +283,12 @@
                 Learnex
             </div>
             <nav>
-                <ul>
+                <button class="menu-toggle" aria-label="Open menu" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul id="main-nav">
                     <li><a href="index.html" class="active">Home</a></li>
-            <!--     <li><a href="#">Courses</a></li>
+             <!--     <li><a href="#">Courses</a></li>
                     <li><a href="#">Live Classes</a></li>
                     <li><a href="#">Teachers</a></li>  -->
                     <li><a href="stories.html">Stories</a></li>
@@ -245,6 +299,15 @@
             </nav>
         </div>
     </header>
+</body>
+<script>
+// Hamburger menu toggle
+function toggleMenu() {
+    var nav = document.getElementById('main-nav');
+    nav.classList.toggle('open');
+}
+</script>
+</html>
             <!-- Learnex Hero Section -->
         <section class="about-hero" style="background: linear-gradient(180deg, #2176ff 0%, #1a5dcc 100%); padding: 70px 0 48px 0; text-align: center; color: #fff;">
             <div class="container" style="max-width: 900px; margin: 0 auto;">
@@ -358,15 +421,8 @@
                     </div>
                 </div>
             </div>
-        </section>
-        </section>
-    </body>  
- </style>
-</head>
-<body>
-
-
-    <footer class="main-footer">
+                </section>
+            <footer class="main-footer">
              <div class="container">
              <div class="footer-content">
  
@@ -418,5 +474,5 @@
 </div>
  </footer>
 
-</body>
+    </body>
 </html>
