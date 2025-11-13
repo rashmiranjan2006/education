@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learnex - Sign Up</title>
-    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo.png') }}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
@@ -121,6 +121,24 @@
             border-bottom: 2px solid var(--primary-blue);
         }
 
+        .login-button {
+            background-color: var(--primary-blue);
+            color: var(--white) !important;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .login-button:hover {
+            background-color: #0056b3;
+        }
+
         .signup-button {
             background-color: var(--primary-blue);
             color: var(--white);
@@ -131,6 +149,7 @@
             font-weight: 600;
             font-size: 16px;
             transition: background-color 0.3s ease;
+            text-decoration: none;
         }
 
         .signup-button:hover {
@@ -482,17 +501,17 @@
     <header class="navbar">
         <div class="container">
             <div class="logo">
-                <img src="images/logo.png" alt="Learnex Logo" width="48" height="48" style="object-fit:contain;" loading="lazy">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Learnex Logo" width="48" height="48" style="object-fit:contain;" loading="lazy">
                 Learnex
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="stories.html">Stories</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="{{ url_for('index') }}" class="{% if request.endpoint == 'index' %}active{% endif %}">Home</a></li>
+                    <li><a href="{{ url_for('stories') }}" class="{% if request.endpoint == 'stories' %}active{% endif %}">Stories</a></li>
+                    <li><a href="{{ url_for('about') }}" class="{% if request.endpoint == 'about' %}active{% endif %}">About</a></li>
+                    <li><a href="{{ url_for('contact') }}" class="{% if request.endpoint == 'contact' %}active{% endif %}">Contact</a></li>
                 </ul>
-                <button class="signup-button">Sign Up</button>
+                <a href="{{ url_for('login') }}" class="login-button">login</a>
             </nav>
         </div>
     </header>
@@ -548,7 +567,7 @@
                 <button type="submit" class="signup-button" id="signupBtn">Sign Up as Student</button>
             </form>
 
-            <p class="login-link">Already have an account? <a href="login.html">Log in here</a></p>
+            <p class="login-link">Already have an account? <a href="{{ url_for('login') }}">Log in here</a></p>
         </div>
     </div>
 
@@ -567,13 +586,13 @@
                 <div class="footer-column">
                     <h4>Quick Links</h4>
                     <ul class="quick-links-grid">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="stories.html">Stories</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="{{ url_for('index') }}">Home</a></li>
+                        <li><a href="{{ url_for('stories') }}">Stories</a></li>
+                        <li><a href="{{ url_for('about') }}">About</a></li>
+                        <li><a href="{{ url_for('contact') }}">Contact</a></li>
                     </ul>
-                    <p><a href="privacy.html">Privacy Policy</a></p>
-                    <p><a href="terms.html">Terms of Service</a></p>
+                    <p><a href="{{ url_for('privacy') }}">Privacy Policy</a></p>
+                    <p><a href="{{ url_for('terms') }}">Terms of Service</a></p>
                 </div>
                 <div class="footer-column">
                     <h4>Connect With Us</h4>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learnex</title>
-    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo.png') }}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
@@ -115,6 +115,7 @@
             font-weight: 600;
             font-size: 16px;
             transition: background-color 0.3s ease;
+            text-decoration: none;
         }
 
         .signup-button:hover {
@@ -227,19 +228,7 @@
 <body>
     <header class="navbar">
         <div class="container">
-            <div class="logo">
-                <img src="images/logo.png" alt="Learnex Logo" width="48" height="48" style="object-fit:contain;" loading="lazy">
-                Learnex
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="stories.html">Stories</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-                <button class="signup-button">Sign Up</button>
-            </nav>
+            <!-- Navigation removed for isolation -->
         </div>
     </header>
 
@@ -271,7 +260,7 @@
             <!-- Card 1 -->
             <div style="background:#f7faff;border-radius:18px;box-shadow:0 2px 16px 0 rgba(30,42,90,0.07);display:flex;flex-direction:row;align-items:center;max-width:520px;min-width:340px;width:100%;padding:32px 32px 32px 24px;gap:28px;border:1.5px solid #e3e8f0;">
                 <div style="flex-shrink:0;">
-                    <img src="images/subham.jpg" alt="Dr.Subham Sahu" style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 2px 8px rgba(30,42,90,0.10);background:#e7edfd;" loading="lazy">
+                    <img src="{{ url_for('static', filename='images/subham.jpg') }}" alt="Dr.Subham Sahu" style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 2px 8px rgba(30,42,90,0.10);background:#e7edfd;" loading="lazy">
                 </div>
                 <div style="text-align:left;flex:1;">
                     <div style="font-size:1.35rem;font-weight:800;color:#1a2340;margin-bottom:2px;">Dr. Subham Sahu</div>
@@ -293,7 +282,7 @@
             <!-- Card 2 -->
             <div style="background:#f7faff;border-radius:18px;box-shadow:0 2px 16px 0 rgba(30,42,90,0.07);display:flex;flex-direction:row;align-items:center;max-width:520px;min-width:340px;width:100%;padding:32px 32px 32px 24px;gap:28px;border:1.5px solid #e3e8f0;">
                 <div style="flex-shrink:0;">
-                    <img src="images/teacher2.jpg" alt="Prof. Rajesh Kumar" style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 2px 8px rgba(30,42,90,0.10);background:#e7edfd;" loading="lazy">
+                    <img src="{{ url_for('static', filename='images/teacher2.jpg') }}" alt="Prof. Rajesh Kumar" style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 2px 8px rgba(30,42,90,0.10);background:#e7edfd;" loading="lazy">
                 </div>
                 <div style="text-align:left;flex:1;">
                     <div style="font-size:1.35rem;font-weight:800;color:#1a2340;margin-bottom:2px;">Prof. Rajesh Kumar</div>
@@ -315,7 +304,7 @@
             <!-- Card 3 -->
             <div style="background:#f7faff;border-radius:18px;box-shadow:0 2px 16px 0 rgba(30,42,90,0.07);display:flex;flex-direction:row;align-items:center;max-width:520px;min-width:340px;width:100%;padding:32px 32px 32px 24px;gap:28px;border:1.5px solid #e3e8f0;">
                 <div style="flex-shrink:0;">
-                    <img src="images/founder.png" alt="Rashmi Ranjan Sahu" style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 2px 8px rgba(30,42,90,0.10);background:#e7edfd;" loading="lazy">
+                    <img src="{{ url_for('static', filename='images/founder.png') }}" alt="Rashmi Ranjan Sahu" style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 2px 8px rgba(30,42,90,0.10);background:#e7edfd;" loading="lazy">
                 </div>
                 <div style="text-align:left;flex:1;">
                     <div style="font-size:1.35rem;font-weight:800;color:#1a2340;margin-bottom:2px;">Rashmi Ranjan Sahu</div>
@@ -386,38 +375,7 @@
         </div>
     </section>
 
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h4>Learnex</h4>
-                    <p class="footer-academy-info">
-                        Personalized learning support with live classes and AI assistance.
-                    </p>
-                    <p class="data-statement">
-                        Data stays on your browser unless you choose to share.
-                    </p>
-                </div>
-                <div class="footer-column">
-                    <h4>Quick Links</h4>
-                    <ul class="quick-links-grid">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="stories.html">Stories</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                    <p><a href="privacy.html">Privacy Policy</a></p>
-                    <p><a href="terms.html">Terms of Service</a></p>
-                </div>
-                <div class="footer-column">
-                    <h4>Connect With Us</h4>
-                    <a href="mailto:support@learnex.com" class="email-link">
-                        <i class="fas fa-envelope"></i> support@learnex.com
-                    </a>
-                    <div class="connect-links">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    <!-- Footer removed for isolation -->
                     </div>
                     <p style="margin-top: 30px; line-height: 1.5;">
                         Accessibility statement: We strive to make our platform accessible to all learners.
