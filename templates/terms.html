@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learnex</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo.png') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* --- Global Variables & Reset --- */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary-blue: #007bff; /* Primary brand color */
+            --dark-blue: #0a1f44; /* Darker blue for background and text */
+            --light-gray: #f8f9fa;
+            --white: #ffffff;
+            --text-color: #333;
+            --section-bg: #f5f8ff; /* Light blue background for the features section */
+            --card-bg: #ffffff;
+            --spark-yellow: #ffc107;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-gray);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- 1. Navbar --- */
+        .navbar {
+            background-color: var(--white);
+            color: var(--dark-blue);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--dark-blue);
+        }
+
+        .navbar .logo img {
+            margin-right: 10px;
+            border-radius: 5px;
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .navbar nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar nav ul {
+            list-style: none;
+            display: flex;
+            margin-right: 20px;
+        }
+
+        .navbar nav ul li {
+            margin-left: 30px;
+        }
+
+        .navbar nav ul li a {
+            color: var(--dark-blue);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .navbar nav ul li a:hover,
+        .navbar nav ul li a.active {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--primary-blue);
+        }
+
+        .signup-button {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .signup-button:hover {
+            background-color: #0056b3;
+        }
+
+         /* --- Footer Section (New Styles) --- */
+        .main-footer {
+            background-color: var(--light-gray);
+            color: #666;
+            padding-top: 60px;
+            font-size: 0.95rem;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        .footer-column h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark-blue);
+            margin-bottom: 20px;
+        }
+        .footer-column p {
+            margin-bottom: 10px;
+        }
+        .footer-column a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-column a:hover {
+            color: var(--primary-blue);
+        }
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 0;
+            list-style: none;
+            padding-left: 0;
+        }
+        .quick-links-grid li {
+            margin: 0;
+            padding: 0;
+        }
+        .connect-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .connect-links a {
+            font-size: 1.2rem;
+        }
+
+        .email-link {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .email-link i {
+            margin-right: 8px;
+            font-size: 1rem;
+            color: var(--primary-blue);
+        }
+        .copyright {
+            border-top: 1px solid #ddd;
+            text-align: left;
+            padding: 20px 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        /* Override styles for specific footer text as seen in the image */
+        .footer-academy-info {
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+        .data-statement {
+            font-style: italic;
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+
+        /* --- Responsive Hamburger Menu --- */
+        .navbar .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+        @media (max-width: 1024px) {
+            .navbar nav ul {
+                display: none;
+                flex-direction: column;
+                background: var(--white);
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 70vw;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+                z-index: 1001;
+            }
+            .navbar nav ul.open {
+                display: flex;
+            }
+            .navbar .menu-toggle {
+                display: block;
+            }
+            .navbar .container {
+                justify-content: space-around;
+            }
+            .footer-content {
+                justify-content: space-around;
+            }
+            .footer-column {
+                min-width: 200px;
+                flex: none;
+            }
+        }
+        @media (max-width: 600px) {
+            html, body {
+                font-size: 15px;
+            }
+            .container {
+                padding: 0 4vw;
+            }
+            .footer-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .footer-column {
+                min-width: 100%;
+            }
+        }
+        @media (min-width: 601px) and (max-width: 1024px) {
+            html, body {
+                font-size: 16px;
+            }
+            .container {
+                padding: 0 3vw;
+            }
+        }
+        @media (min-width: 1025px) {
+            html, body {
+                font-size: 17px;
+            }
+        }
+        img, video {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        button, .btn, .signup-button {
+            min-height: 44px;
+            min-width: 44px;
+            font-size: 1em;
+        }
+        a, button {
+            touch-action: manipulation;
+        }
+        html, body {
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Learnex Logo" width="48" height="48" style="object-fit:contain;" loading="lazy">
+                Learnex
+            </div>
+            <nav>
+                <button class="menu-toggle" aria-label="Open menu" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul id="main-nav">
+                    <li><a href="{{ url_for('index') }}" class="{% if request.endpoint == 'index' %}active{% endif %}">Home</a></li>
+                    <li><a href="{{ url_for('stories') }}" class="{% if request.endpoint == 'stories' %}active{% endif %}">Stories</a></li>
+                    <li><a href="{{ url_for('about') }}" class="{% if request.endpoint == 'about' %}active{% endif %}">About</a></li>
+                    <li><a href="{{ url_for('contact') }}" class="{% if request.endpoint == 'contact' %}active{% endif %}">Contact</a></li>
+                </ul>
+                <a href="{{ url_for('signup') }}" class="signup-button">Sign Up</a>
+            </nav>
+</body>
+</html>
+<script>
+// Hamburger menu toggle
+function toggleMenu() {
+    var nav = document.getElementById('main-nav');
+    nav.classList.toggle('open');
+}
+</script>
+        </div>
+    </header>
+
+    <!-- Learnex Hero Section -->
+    <section class="about-hero" style="background: linear-gradient(180deg, #2176ff 0%, #1a5dcc 100%); padding: 70px 0 48px 0; text-align: center; color: #fff;">
+        <div class="container" style="max-width: 900px; margin: 0 auto;">
+            <h1 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 18px; letter-spacing: -2px;">Terms And Conditions Learnex</h1>
+            <p style="font-size: 1.5rem; font-weight: 400; line-height: 1.3; max-width: 700px; margin: 0 auto;">Transforming education through personalized learning and innovative teaching methods</p>
+        </div>
+    </section>
+
+    <!-- Terms and Conditions Section -->
+    <section class="terms-section" style="background: #fff; padding: 48px 0;">
+        <div class="container" style="max-width: 900px; margin: 0 auto; color: #222;">
+            <div style="font-size: 1.1rem; line-height: 1.8;">
+                <p style="font-size:1.05rem; color:#888; margin-bottom: 1.5em;"><strong>Last Updated: January 2025</strong></p>
+                <ol style="padding-left: 1.2em;">
+                    <li><strong>Acceptance of Terms</strong><br>
+                        Welcome to Learnex. By accessing or using our educational platform, you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use our services.<br><br>
+                        These Terms constitute a legally binding agreement between you and Learnex. We reserve the right to modify these Terms at any time, and your continued use of the platform constitutes acceptance of any changes.
+                    </li>
+                    <li><strong>Eligibility</strong><br>
+                        You must be at least 13 years old to use Learnex. If you are under 18, you represent that you have obtained parental or guardian consent to use our services.<br><br>
+                        By creating an account, you represent that all information provided is accurate, current, and complete. You are responsible for maintaining the confidentiality of your account credentials.
+                    </li>
+                    <li><strong>User Accounts</strong>
+                        <ol type="a" style="padding-left: 1.2em;">
+                            <li><strong>Account Types</strong><br>
+                                Learnex offers three types of user accounts:
+                                <ul style="margin-top: 0.5em;">
+                                    <li><strong>Students:</strong> Access to courses, live classes, and AI study assistant</li>
+                                    <li><strong>Teachers:</strong> Ability to create and manage courses, host live classes (subject to approval)</li>
+                                    <li><strong>Administrators:</strong> Platform management and oversight (by authorization only)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Account Responsibilities</strong><br>
+                                You agree to:
+                                <ul style="margin-top: 0.5em;">
+                                    <li>Provide accurate and truthful information during registration</li>
+                                    <li>Maintain the security of your password and account</li>
+                                    <li>Notify us immediately of any unauthorized access</li>
+                                    <li>Accept responsibility for all activities under your account</li>
+                                    <li>Not share your account credentials with others</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </li>
+                    <li><strong>Course Enrollment and Access</strong>
+                        <ol type="a" style="padding-left: 1.2em;">
+                            <li><strong>Enrollment</strong><br>
+                                When you enroll in a course, you are granted a limited, non-exclusive, non-transferable license to access the course content for personal, non-commercial use. Course access is typically lifetime unless otherwise specified.
+                            </li>
+                            <li><strong>Course Content</strong><br>
+                                All course materials, including videos, documents, quizzes, and assessments, are the intellectual property of Learnex or our instructors. You may not reproduce, distribute, or create derivative works without explicit permission.
+                            </li>
+                            <li><strong>Refund Policy</strong><br>
+                                We offer a 7-day refund policy for course purchases. Refund requests must be submitted within 7 days of purchase and with less than 20% course completion. Live class fees are non-refundable after the class has been conducted.
+                            </li>
+                        </ol>
+                    </li>
+                    <li><strong>Live Classes</strong><br>
+                        Live classes are interactive sessions conducted in real-time. By participating in live classes:
+                        <ul style="margin-top: 0.5em;">
+                            <li>You agree to behave respectfully and professionally</li>
+                            <li>You consent to class recordings for future reference</li>
+                            <li>You understand that missed classes may be reviewed via recordings but cannot be rescheduled individually</li>
+                            <li>You will not record, screenshot, or redistribute class content without permission</li>
+                        </ul>
+                    </li>
+                    <li><strong>AI Study Assistant</strong><br>
+                        Our AI Study Assistant provides automated learning support. While we strive for accuracy, the AI may occasionally provide incorrect information. The AI is a supplementary tool and should not replace professional instruction or judgment.<br><br>
+                        Conversations with the AI may be used to improve the service. Sensitive or personal information shared with the AI is handled according to our Privacy Policy.
+                    </li>
+                    <li><strong>Prohibited Conduct</strong><br>
+                        You agree not to:
+                        <ul style="margin-top: 0.5em;">
+                            <li>Use the platform for any illegal or unauthorized purpose</li>
+                            <li>Share copyrighted course materials without permission</li>
+                            <li>Harass, abuse, or harm other users or instructors</li>
+                            <li>Attempt to gain unauthorized access to platform systems</li>
+                            <li>Upload malicious code, viruses, or harmful content</li>
+                            <li>Create multiple accounts to abuse promotions or services</li>
+                            <li>Impersonate another person or entity</li>
+                            <li>Scrape, data mine, or extract data from the platform</li>
+                            <li>Interfere with or disrupt platform operations</li>
+                        </ul>
+                    </li>
+                    <li><strong>Intellectual Property Rights</strong>
+                        <ol type="a" style="padding-left: 1.2em;">
+                            <li><strong>Platform Content</strong><br>
+                                All content on Learnex, including text, graphics, logos, videos, and software, is the property of Learnex or its licensors and is protected by copyright, trademark, and other intellectual property laws.
+                            </li>
+                            <li><strong>User-Generated Content</strong><br>
+                                If you submit content (e.g., forum posts, comments, assignments), you grant Learnex a worldwide, non-exclusive, royalty-free license to use, reproduce, and display that content for platform operations.
+                            </li>
+                            <li><strong>Teacher Content</strong><br>
+                                Teachers retain ownership of their original course materials but grant Learnex a license to host and distribute the content as part of our educational services.
+                            </li>
+                        </ol>
+                    </li>
+                    <li><strong>Payment and Billing</strong><br>
+                        Course fees are displayed in Indian Rupees (₹). By purchasing a course or service, you agree to pay the stated price plus any applicable taxes. We use secure third-party payment processors to handle transactions.<br><br>
+                        Subscription services renew automatically unless canceled before the renewal date. You can manage your subscriptions through your account settings.
+                    </li>
+                    <li><strong>Disclaimers and Limitations of Liability</strong>
+                        <ol type="a" style="padding-left: 1.2em;">
+                            <li><strong>Service Availability</strong><br>
+                                Learnex is provided "as is" and "as available." We do not guarantee uninterrupted or error-free service. We reserve the right to modify, suspend, or discontinue services at any time without notice.
+                            </li>
+                            <li><strong>Educational Outcomes</strong><br>
+                                While we strive for excellence, we do not guarantee specific educational outcomes, exam results, or academic performance. Success depends on individual effort, dedication, and various external factors.
+                            </li>
+                            <li><strong>Limitation of Liability</strong><br>
+                                To the maximum extent permitted by law, Learnex shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the platform.
+                            </li>
+                        </ol>
+                    </li>
+                    <li><strong>Indemnification</strong><br>
+                        You agree to indemnify and hold harmless Learnex, its officers, directors, employees, and agents from any claims, damages, losses, or expenses (including legal fees) arising from your violation of these Terms or misuse of the platform.
+                    </li>
+                    <li><strong>Termination</strong><br>
+                        We reserve the right to suspend or terminate your account at our discretion if you violate these Terms or engage in prohibited conduct. Upon termination:
+                        <ul style="margin-top: 0.5em;">
+                            <li>Your access to courses and platform features will be revoked</li>
+                            <li>You remain responsible for any outstanding fees</li>
+                            <li>Certain provisions (e.g., intellectual property, indemnification) survive termination</li>
+                        </ul>
+                    </li>
+                    <li><strong>Governing Law and Dispute Resolution</strong><br>
+                        These Terms are governed by the laws of India. Any disputes arising from these Terms or your use of Learnex shall be resolved through binding arbitration in accordance with Indian arbitration laws.<br><br>
+                        You agree to first attempt to resolve disputes informally by contacting our support team before initiating formal proceedings.
+                    </li>
+                    <li><strong>Accessibility</strong><br>
+                        We are committed to making Learnex accessible to all learners. We strive for WCAG AA compliance and welcome feedback on accessibility improvements. Please contact us at <a href="mailto:accessibility@learnex.com">accessibility@learnex.com</a> with concerns.
+                    </li>
+                    <li><strong>Changes to Terms</strong><br>
+                        We may update these Terms periodically. Material changes will be communicated via email or platform notification. Your continued use after changes constitutes acceptance of the updated Terms.
+                    </li>
+                    <li><strong>Contact Information</strong><br>
+                        For questions or concerns about these Terms, please contact us.
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Info and Thank You Message (as per image) -->
+    <div style="max-width:900px;margin:32px auto 0 auto;padding:0 16px;">
+        <div style="background:#f8f9fa;border-radius:12px;padding:28px 28px 18px 28px;margin-bottom:28px;">
+            <p style="margin-bottom:10px;font-size:1.08rem;"><b>Email:</b> <a href="mailto:legal@learnex.com" style="color:#4a6fa1;text-decoration:none;">legal@learnex.com</a></p>
+            <p style="margin-bottom:10px;font-size:1.08rem;"><b>Support:</b> <a href="mailto:support@learnex.com" style="color:#4a6fa1;text-decoration:none;">support@learnex.com</a></p>
+            <p style="margin-bottom:0;font-size:1.08rem;"><b>Address:</b> Learnex Legal Department</p>
+        </div>
+        <div style="background:#e9f0fb;border:1px solid #b5c9e3;border-radius:14px;padding:22px 24px 18px 24px;">
+            <span style="font-weight:600; color:#2a3b5d;">Thank you for choosing Learnex.</span> <span style="color:#3a4a5d;">We are committed to providing a safe, supportive, and effective learning environment. By using our platform, you join a community dedicated to educational excellence and personal growth.</span>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>Learnex</h4>
+                    <p class="footer-academy-info">
+                        Personalized learning support with live classes and AI assistance.
+                    </p>
+                    <p class="data-statement">
+                        Data stays on your browser unless you choose to share.
+                    </p>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul class="quick-links-grid">
+                        <li><a href="{{ url_for('index') }}">Home</a></li>
+                        <li><a href="{{ url_for('stories') }}">Stories</a></li>
+                        <li><a href="{{ url_for('about') }}">About</a></li>
+                        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                    </ul>
+                    <p><a href="{{ url_for('privacy') }}">Privacy Policy</a></p>
+                    <p><a href="{{ url_for('terms') }}">Terms of Service</a></p>
+                </div>
+                <div class="footer-column">
+                    <h4>Connect With Us</h4>
+                    <a href="mailto:support@learnex.com" class="email-link">
+                        <i class="fas fa-envelope"></i> support@learnex.com
+                    </a>
+                    <div class="connect-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <p style="margin-top: 30px; line-height: 1.5;">
+                        Accessibility statement: We strive to make our platform accessible to all learners.
+                    </p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Learnex Academy. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
